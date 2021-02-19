@@ -2,40 +2,40 @@
 ## Usersテーブル
 
 | Column         | Type   | Options                  |
-| ---------------| ------ | -------------------------|
-| email          | string | null: false, unique:true |
-| password       | string | null: false              |
-| nickname       | string | null: false              |
-| last_name      | string | null: false              |
-| first_name     | string | null: false              |
-| kana_last_name | string | null: false              |
-| kana_first_name| string | null: false              |
-| birthday       | string | null: false              |
+| -------------------------| ------ | -------------------------|
+| email                    | string | null: false, unique:true |
+| encrypted_password       | string | null: false              |
+| nickname                 | string | null: false              |
+| last_name                | string | null: false              |
+| first_name               | string | null: false              |
+| kana_last_name           | string | null: false              |
+| kana_first_name          | string | null: false              |
+| birthday                 | date   | null: false              |
 
 ### association
 
-- has_many :Items
-- has_many :Purchase_records
+- has_many :items
+- has_many :purchase_records
 
 
 ## Itemsテーブル
 
-| Column             | type     | Options         |
-| -------------------| ---------| --------------- |
-| item               | string   | null: false     |
-| description        | text     | null: false     |
-| category           | string   | null: false     |
-| condition          | string   | null: false     |
-| delivery_fee       | string   | null: false     |
-| shipment_source    | string   | null: false     |
-| shipment_days      | string   | null: false     |
-| price              | string   | null: false     |
-| user_id            | reference|foreign_key:true |
+| Column                | type       | Options         |
+| ----------------------| -----------| --------------- |
+| item                  | string     | null: false     |
+| description           | text       | null: false     |
+| category_id           | integer    | null: false     |
+| condition_id          | integer    | null: false     |
+| delivery_fee_id       | integer    | null: false     |
+| shipment_source_id    | integer    | null: false     |
+| shipment_days_id      | integer    | null: false     |
+| price                 | integer    | null: false     |
+| user                  | references |foreign_key:true |
 
 ### association
 
 - belongs_to :Users
-- has_one :Purchase_records
+- has_one :purchase_records
 
 ## Destinationsテーブル
 
@@ -43,25 +43,25 @@
 | ------------------------| ------------| -----------------|
 | shipment_destination    | string      | null: false      |
 | postal_code             | string      | null: false      |
-| prefectures             | string      | null: false      |
+| prefectures_id          | integer     | null: false      |
 | municipality            | string      | null: false      |
 | address                 | string      | null: false      |
 | phone_number            | string      | null: false      |
-| purchase_records_id     | reference   | foreign_key:true |
+| purchase_records        | references  | foreign_key:true |
 
 ### association
 
-- belongs_to :Purchase_records
+- belongs_to :purchase_records
 
 ## Purchase_recordテーブル
 
 | Column    | Type      | Options          |
 | --------  | ----------| -----------------|
-| user_id   | reference | foreign_key:true |
-| item_id   | reference | foreign_key:true |
+| user      | references| foreign_key:true |
+| item      | references| foreign_key:true |
 
 ### association
 
 - belongs_to :items
-- belongs_to :Users
+- belongs_to :users
 - has_one :destinations
