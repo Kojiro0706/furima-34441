@@ -41,7 +41,6 @@
 
 | Column                  | Type        | Options          |
 | ------------------------| ------------| -----------------|
-| shipment_destination    | string      |                  |
 | postal_code             | string      | null: false      |
 | prefecture_id           | integer     | null: false      |
 | municipality            | string      | null: false      |
