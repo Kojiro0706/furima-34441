@@ -27,7 +27,7 @@
 | category_id           | integer    | null: false     |
 | condition_id          | integer    | null: false     |
 | delivery_fee_id       | integer    | null: false     |
-| shipment_source_id    | integer    | null: false     |
+| prefecture_id         | integer    | null: false     |
 | shipment_days_id      | integer    | null: false     |
 | price                 | integer    | null: false     |
 | user                  | references |foreign_key:true |
@@ -43,7 +43,7 @@
 | ------------------------| ------------| -----------------|
 | shipment_destination    | string      |                  |
 | postal_code             | string      | null: false      |
-| prefectures_id          | integer     | null: false      |
+| prefecture_id           | integer     | null: false      |
 | municipality            | string      | null: false      |
 | address                 | string      | null: false      |
 | phone_number            | string      | null: false      |
