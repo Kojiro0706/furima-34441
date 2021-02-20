@@ -34,24 +34,24 @@
 
 ### association
 
-- belongs_to :Users
-- has_one :purchase_records
+- belongs_to :user
+- has_one :purchase_record
 
 ## Destinationsテーブル
 
 | Column                  | Type        | Options          |
 | ------------------------| ------------| -----------------|
-| shipment_destination    | string      | null: false      |
+| shipment_destination    | string      |                  |
 | postal_code             | string      | null: false      |
 | prefectures_id          | integer     | null: false      |
 | municipality            | string      | null: false      |
 | address                 | string      | null: false      |
 | phone_number            | string      | null: false      |
-| purchase_records        | references  | foreign_key:true |
+| purchase_record         | references  | foreign_key:true |
 
 ### association
 
-- belongs_to :purchase_records
+- belongs_to :purchase_record
 
 ## Purchase_recordテーブル
 
@@ -62,6 +62,6 @@
 
 ### association
 
-- belongs_to :items
-- belongs_to :users
-- has_one :destinations
+- belongs_to :item
+- belongs_to :user
+- has_one :destination
