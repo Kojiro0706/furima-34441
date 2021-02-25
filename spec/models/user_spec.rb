@@ -5,12 +5,12 @@ RSpec.describe User, type: :model do
     before do
       @user = FactoryBot.build(:user)
     end
-    context "ユーザーが保存できる場合" do
+    context 'ユーザーが保存できる場合' do
       it '全て適切に入力されていれば登録できること' do
         expect(@user).to be_valid
       end
     end
-    context "ユーザーが保存できない場合" do
+    context 'ユーザーが保存できない場合' do
       it 'nicknameが空だと登録できない' do
         @user.nickname = ''
         @user.valid?
