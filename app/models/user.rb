@@ -1,11 +1,12 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :items
 
   with_options presence: true do
-      validates :nickname
-      validates :birthday
-      validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{6,}\z/ }
+    validates :nickname
+    validates :birthday
+    validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{6,}\z/ }
 
     with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/ } do
       validates :last_name
