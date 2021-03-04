@@ -51,7 +51,12 @@ RSpec.describe PurchaseRecordDestination, type: :model do
       it 'phone_numberが12けた以上だと登録できない' do
         @purchaserecord_destination.phone_number = '080123456789'
         @purchaserecord_destination.valid?
-        expect(@purchaserecord_destination.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+        expect(@purchaserecord_destination.errors.full_messages).to include('Phone number is invalid')
+      end
+      it 'phone_numberが数字以外が混合していると登録できない' do
+        @purchaserecord_destination.phone_number = 'aiueo123456'
+        @purchaserecord_destination.valid?
+        expect(@purchaserecord_destination.errors.full_messages).to include('Phone number is invalid')
       end
       it 'userと紐づいてないと登録できない' do
         @purchaserecord_destination.user_id = nil

@@ -1,7 +1,7 @@
 class PurchaseRecordsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
-  before_action :check_user, only: [:index]
+  before_action :check_user, only: [:index,:create]
   def index
     redirect_to root_path if @item.purchase_record.present?
     @purchaserecord_destination = PurchaseRecordDestination.new
