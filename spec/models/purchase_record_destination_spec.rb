@@ -31,7 +31,7 @@ RSpec.describe PurchaseRecordDestination, type: :model do
       it 'prefecture_idが1だと保存できない' do
         @purchaserecord_destination.prefecture_id = 1
         @purchaserecord_destination.valid?
-        expect(@purchaserecord_destination.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@purchaserecord_destination.errors.full_messages).to include('Prefecture must be other than 1')
       end
       it 'municipalityが空だと登録できない' do
         @purchaserecord_destination.municipality = ''
@@ -49,9 +49,9 @@ RSpec.describe PurchaseRecordDestination, type: :model do
         expect(@purchaserecord_destination.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberが12けた以上だと登録できない' do
-        @purchaserecord_destination.phone_number = "080123456789"
+        @purchaserecord_destination.phone_number = '080123456789'
         @purchaserecord_destination.valid?
-        expect(@purchaserecord_destination.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+        expect(@purchaserecord_destination.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
       it 'userと紐づいてないと登録できない' do
         @purchaserecord_destination.user_id = nil
@@ -62,6 +62,11 @@ RSpec.describe PurchaseRecordDestination, type: :model do
         @purchaserecord_destination.item_id = nil
         @purchaserecord_destination.valid?
         expect(@purchaserecord_destination.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'tokenが空では登録できない' do
+        @purchaserecord_destination.token = nil
+        @purchaserecord_destination.valid?
+        expect(@purchaserecord_destination.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
